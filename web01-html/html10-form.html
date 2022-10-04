@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="html-from-res.html" method="get">
+        <fieldset>
+            <legend>회원가입</legend>
+
+            <p>ID : <input type="text" name="id"></p>
+
+            <p>PW : <input type="password" name="pw"></p>
+
+            <p>
+                emali 수신 여부<br>
+                <input type="radio" name="rdo" value="y">Yes<br>
+                <input type="radio" name="rdo" value="n">No
+            </p>
+            <p>
+                관심분야<br>
+                <input type="checkbox" name="python" value="python">PYTHON<br>
+                <input type="checkbox" name="web" value="web">WEB<br>
+                <input type="checkbox" name="database" value="database">database
+            </p>
+            <p>
+                하고 싶은 말<br>
+                <textarea name="etc" cols="30" rows="10"></textarea>
+            </p>
+            <p>
+                <input type="button" value="그냥 버튼">
+                <input type="reset" value="리셋 버튼">
+                <input type="submit" value="전송 버튼">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

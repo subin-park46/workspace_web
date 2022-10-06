@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function object01() {
+            this.name01 = "홍길동"; // this는 객체(나)
+            var name02 = "hong-gd";
+            this.getName02 = function() {
+                return name02; // name02의 출력을 위한 것.
+            }
+        }
+
+        // 객체 리터럴 : 객체 자체가 값이다.
+        var object02 = {
+            name: "kim-sd",
+            prn: function(){
+                alert(object02.name + " : 010-1111-1111");
+            }
+        }
+
+        function objTest() {
+            var obj01 = new object01(); // object01에서 this로 선언해서 objTest에서 사용 가능.
+            alert(obj01.name01);
+            alert(obj01.name02); // 오류나는 이유 : var로 설정한 것은 지역변수이므로 선언한 내부에서만 사용 가능.
+            alert(obj01.getName02()) // 위에 this로 선언해서 hong-gd 반환
+            alert(object02.name);
+            object02.prn();
+
+            obj01.prn();
+        }
+
+        // prototype
+        object01.prototype.prn = function() {
+            alert(this.name01 + " : 010-2222-2222");
+        }
+    </script>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <p>
+        객체의 구성
+        - property : 속성
+        - function(method) :  기능
+        - this : 객체 내부의 메서드나 속성을 정의
+        - prototype : 객체의 기능 확장
+    </p>
+
+    <button onclick="objTest();">확인</button>
+</body>
+</html>

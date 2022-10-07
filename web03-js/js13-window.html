@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        #regist {
+            border: 1px solid black;
+            background: pink;
+            position: absolute;  /*부모의 위치에서 상대적으로 얼마나 움직이는지*/
+            top: 200px;
+            left: 500px; 
+            display: none; /* display는 none이기  때문에 일단 보이지 않는 상태*/
+        }
+    </style>
+	
+    <!-- 
+        display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태)
+        visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+     -->
+    
+    <script type="text/javascript">
+        function openWin() {
+            var url = "js13-window-popup.html"; // js13-window-pop.html을 팝업창으로 연다.
+            var title = "myframe";
+            var prop = "top=200px,left=600px,width=500px,height=500px";
+            window.open(url, title, prop);
+        }
+    
+        function registForm() {
+			// 회원가입 폼 regist의 display를 block으로 바꾸어 보이게 한다.
+            document.getElementById("regist").style.display = "block";
+			// body 태그 background = 회색
+            document.body.style.background = "gray";
+    
+			// 팝업창, 회원가입 버튼의 name = btn
+            var btns = document.getElementsByName("btn"); // 
+            for (var i in btns) {
+                btns[i].disabled = "disabled"; // 버튼을 disabled(비활성화)
+            }
+        }
+    
+        function closeWin() {
+			// 회원가입 폼 display를 none으로 바꾸어 화면에서 안보이게 한다.
+            document.getElementById("regist").style.display = "none";
+			//body의 background = 흰색
+            document.body.style.background = "white";
+			
+            var btns = document.getElementsByName("btn");
+            for ( var i in btns) {
+                btns[i].disabled = ""; // disabled = ""; 이므로 버튼을 받아 활성화
+            }
+        }
+    
+        function idchk() { // text click -> 팝업창으로 중복체크 확인
+            alert("중복체크를 확인하세요");
+        }
+    
+        function idCheck() { // 중복체크 버튼 클릭 -> "js-window-check.html" 팝업창
+            open("js13-window-id-check.html", "", "width=300px,height=300px");
+        }
+    </script>
+    
+    
+</head>
+<body>
+    
+    <h1>window객체</h1>
+	
+	<pre>
+	프로퍼티
+	 -document : 웹 페이지 그 자체
+	 -history : 브라우저의 사용자 히스토리를 목록, 배열 상태로 저장하는 객체
+	 -location : url 정보를 가져오는 객체 (location.href = 새로운 페이지로 이동)
+	 -navigator : 현재 브라우저의 정보를 반환하는 객체
+	 -screen : 사용자 화면에 대한 정보
+	 -frames : 프레임들은 각각의 window 객체를 별도로 가짐
+	 -parent : 해당 요소의 바로 위에 존재하는 하나의 부모 요소 반환
+	 -top : 최상위 창 반환
+	 -self : 현재 자신의 창 반환
+	메서드
+	 -alert() : 경고창 띄우는 메서드
+	 -confirm() : 확인 / 취소 버튼 선택 가능한 대화상자
+	 -prompt() : 입력창 / 확인 / 취소 대화상자
+	 -back() : 한 단계 전 화면으로 돌아감
+	 -forward() : 한 단계 다음 화면으로 넘어감
+	 -setInterval() : 일정한 시간 간격을 두고 반복해서 실행하고 싶을 때
+	 -clearInterval() : setInterval의 반복실행을 중단시키는 메서드
+	 -setTimeout() : 일정시간이 지난 후 실행 해야 하는 경우 사용
+	 -open() : 새로운 창 반환, 실패 시 null
+	 -close() : 현재 창 닫는 메서드, 닫을 창 지정 가능
+	 -scroll() : 스크롤 이동, 스크롤 실행 시 이벤트 발생
+	 -scrollBy() : 현재 위치에서 부여된 값만큼 스크롤 이동
+	 -scrollTo() : 해당 좌표로 스크롤을 이동시킴 
+	</pre> 
+
+    
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+	
+	<div id="regist">
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td> 
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> <!-- readonly = "readonly" - 읽기 전용 -->
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr> 
+				<tr>
+					<td>패스워드</td> 
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<br/><br/><br/>
+	<!-- inline frame의 약자, 해당 웹 페이지 안에 어떠한 제한 없이 다른 페이지를 불러와 삽입 가능. -->
+	<iframe name="myframe"></iframe> 
+
+
+</body>
+</html>

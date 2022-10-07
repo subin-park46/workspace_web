@@ -91,14 +91,15 @@
             var circleWidth = document.getElementById("circle").style.width;
 
             var r = parseInt(circleWidth); // 지름
-            var r_2 = Math.floor(r / 2); // 반지름
-            
+            var r_2 = r / 2; // 반지름
 
-            var area = Math.PI * (Math.pow(r, 2)); // 제곱 -> PI * R * R : 넓이
-            var len = Math.PI * r * 2; // -> 둘레 2 * PI * R
+            // 넓이 -> 반지름 * 반지름 * 3.14
+            var area = Math.PI * (Math.pow(r_2, 2)); // Math.pow(밑, 지수)
+            // 둘레 -> 2 * PI * 반지름
+            var len = 2 * Math.PI * r_2;
 
-            document.getElementById("area").innerHTML = Math.round(area);
-            document.getElementById("len").innerHTML = Math.round(len);
+            document.getElementById("area").innerHTML = area;
+            document.getElementById("len").innerHTML = len;
         }
 
     </script>

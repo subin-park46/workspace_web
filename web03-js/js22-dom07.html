@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function tableVal() { 
+            //form 태그의 index 0인 태그 -> forms이기 때문에 Nodelist, [0]이 있어야 호출 가능.
+            var doc = document.forms[0];
+            // doc.id.value는 doc의 form 태그가 가진 name='id'인 태그의 value
+            var vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value]; 
+
+            for (var i = 0; i < vals.length; i++) {
+                if (vals[i] == null || vals[i] == "" || vals[i] == undefined) {
+                    alert("모두 다 입력해주세요.");
+                    return;
+                } 
+            } // null 하나라도 있으면 alert 출력, 
+            // 모두 null이 아니면 createRow 함수 실행.
+            document.getElementById("addtr").appendChild(createRow(vals));
+        }
+        
+        function createRow(vals) { // <tr>태그 생성 후 <td> 생성
+                                // i = 0 -> <tr><td>doc.id.value</td></tr>
+            var tr = document.createElement("tr"); 
+            for (var i = 0; i < vals.length; i++) {
+                var td = document.createElement("td"); 
+                td.textContent = vals[i]; 
+                tr.appendChild(td);
+            }
+            var dTd = document.createElement("td");
+            dTd.innerHTML = "<input type='button' value='삭제' onclick='delRow(this)'>";
+            tr.appendChild(dTd);
+
+            return tr;
+        }
+
+        function deleteVal() { // 모든 데이터 삭제
+            // addtr 안에 있는 모든 요소들의 값이 없어질 때까지 하나씩 삭제
+            var tbody = document.getElementById("addtr");
+            while(tbody.hasChildNodes()) {
+                tbody.removeChild(tbody.lastChild);
+            }
+        }
+
+        function delRow(ele) { // 해당 row 삭제
+            var delTr = ele.parentNode.parentNode; //1. createRow(), 2. tableVal()
+            var tbody = document.getElementById("addtr"); // addtr의 id를 가지고 있는 객체 생성
+            tbody.removeChild(delTr);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table id="intable">
+            <tr>
+                <th>아이디 : </th>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <th>비밀번호 : </th>
+                <td><input type="text" name="pw"></td>
+            </tr>
+            <tr>
+                <th>주소 : </th>
+                <td><input type="text" name="addr"></td>
+            </tr>
+            <tr>
+                <th>전화번호 : </th>
+                <td><input type="text" name="phone"></td>
+            </tr>
+        </table>
+        <input type="button" value="추가" onclick="tableVal();">
+        <input type="button" value="삭제" onclick="deleteVal();">
+    </form>
+
+    <div id="addtable">
+        <table border="1" id="ctb">
+            <col width="100px">
+            <col width="100px">
+            <col width="300px">
+            <col width="200px">
+            <col width="100px">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="addtr"></tbody> <!-- 테이블 추가 내용 아래 들어가기 -->
+        </table>
+    </div>
+</body>
+</html>

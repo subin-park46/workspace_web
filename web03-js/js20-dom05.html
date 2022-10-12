@@ -37,7 +37,14 @@
             }
 
             anchs[1].onclick = function() {
-                
+                if(img.getAttribute("alt") == "img06") {
+                   img.setAttribute("alt", "img01");
+                   img.setAttribute("src", "resources/imgs/img01.png");
+                   count = 1;
+                } else {
+                    img.setAttribute("alt", "img0" + (++count));
+                    img.setAttribute("src", "resources/imgs/img0" + count + ".png");
+                }
             }
         }
     </script>
@@ -46,7 +53,7 @@
     <div>
         <a href="#" id="lt">◀</a>
         <img src="resources/imgs/img01.png" alt="img01">
-        <a hreff="#" id="lt">▶</a>
+        <a href="#" id="lt">▶</a>
     </div>
 
 </body>

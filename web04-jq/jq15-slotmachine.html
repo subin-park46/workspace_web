@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+
+        #menubox {
+            position: relative;
+        }
+
+        #menu {
+            overflow: auto;
+        }
+
+        .sel {
+            width: 140px;
+            height: 140px;
+            border: 5px dotted red;
+            position: absolute;
+            left: 300px;
+        }
+
+        button {
+            width: 150px;
+            height: 50px;
+            margin-left: 300px;
+        }
+    </style>
+
+    <script src="./resources/js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(function() {
+
+            setInterval(function() {
+                var div = $("#menu");
+                // 클래스가 .active인 첫번째 div를 맨 마지막으로 보낸다.
+                $(".active").first().appendTo(div);
+            }, 50); // 50밀리초 간격 반복실행, 1000으로 쓰면 1초.
+                    // 아직 active 클래스가 없어서 button 클릭 전까지 실행되지 않음.
+
+            // 버튼 클릭하면
+            $("button").click(function() {
+                // .toggleClass() : 선택한 요소에 클래스 값을 넣었다 뺐다 할 수 있음.
+                // toggleClass로 인해 active 클래스가 모든 img에 생김. 
+                $("img").toggleClass("active");
+
+                // 처음 button은 start
+                if($("button").text() == "start") {
+                    // button 누르면 stop, 이미지는 계속 마지막으로 이동
+                    $("button").text("stop");
+                } else {
+                    $("button").text("start"); // stop 누르면 다시 start로 바뀌고,
+                    // 몇 번째 이미지인지 alert으로 알려줌.
+                    // .attr은 요소의 속성 값을 가져오는 것.
+                    alert($("img:eq(2)").attr("alt"));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Slotmachine</h1>
+
+    <div id="menubox">
+        <div class="sel"></div>
+        <div id="menu">
+            <img src="./resources/imgs/img01.png" alt="img01">
+            <img src="./resources/imgs/img02.png" alt="img02">
+            <img src="./resources/imgs/img03.png" alt="img03">
+            <img src="./resources/imgs/img04.png" alt="img04">
+            <img src="./resources/imgs/img05.png" alt="img05">
+        </div>
+
+        <button>start</button>
+    </div>
+</body>
+</html>

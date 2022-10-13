@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVER</title>
+
+    <style>
+        #main_header .searchbox input {
+            flex: 9; /* searchbox내부에서 9만큼의 크기를 차지(비율) */
+            height: 46px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            
+        }
+
+        .searchbox {
+            width: 520px;
+            height: 50px;
+            border: 2px solid #2cc870;
+            display: flex;
+            float: left;
+            
+        }
+
+        .searchbox button {
+            flex: 1; /* searchbox에서 1만큼의 크기 */
+            height: 50px;
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            background: #03cf5d;
+            color:white;
+
+        }
+
+        .naver_logo {
+            margin-bottom: 12px;
+            width: 220px;
+            height: 65px;
+            float: left;
+        }
+
+        .ad_naver {
+            width: 700px;
+            height: 120px;
+            float: left;
+        }
+        
+        .apps_link {
+            margin-left: 5px;
+        }
+
+        header {
+            margin: auto;
+            width: 1080px;
+            height: 215px;
+            top: 20px;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .apps {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 13px;
+        }
+
+        .naver_items {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-top: 1px solid white;
+        }
+        
+
+        .naver_items ul > li {
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .naver_items ul > li:nth-child(-n + 8) > a {
+            color: #2cc870;
+        }
+
+        .naver_items ul > li:nth-child(n + 9) > a {
+            color: black;
+        }
+
+        .naver_items ul > li > a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #main_right_area #naverlog .naverlogin {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px ;
+            font-size: 12px;
+            border: 2px;
+            text-align: center;
+        }
+
+        #naverlog > .naverlogin > span {
+            text-align: center;
+        }
+
+        #main_right_area {
+            background-color: #2cc870;
+            border-radius: 0.5em;
+            text-align: center;
+            float: right;
+            width: 350px;
+        }
+
+        #main_right_area > #naverlog p {
+            font-size: 10px;
+            border-top: 20px;
+        }
+
+        main > .navermain > #naver_news > .news_banner h5 {
+            text-align: left;
+            font-size: 14px;
+            padding-left: 40px;
+            padding-right: 25px;
+            padding-top: 30px;
+            padding-bottom: -10px;
+        }
+
+        main .navermain .news_lists .news_list {
+           float: left;
+           margin-right: 20px;
+           margin-top: 20px;
+           display: flex;
+           justify-content: space-between;           
+        }
+
+        .navermain #naver_news .news_banner h3 {
+            text-align: left;
+            padding: 5;
+            margin: 0;
+        }
+
+        ul { 
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            width: 1080px;
+            height: 310px;
+            margin: auto;
+            padding: 0 8px 0 8px; /* 위 오른쪽 아래 왼쪽 */
+            display: flex;
+            flex-direction: column; /* 요소들을 수평정렬 */
+            font-size: 12px;
+        }
+
+        .notice_area {
+            flex: 1;
+            display: flex;
+            justify-content: space-between; /* 양끝 정렬 */
+            align-items: center;
+            border-bottom: 1px solid white;
+        }
+
+        .notice_area a {
+            color: black;
+        }
+
+        .side_area {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid white;
+        }
+
+        .user_area {
+            flex: 4;
+            line-height: 2em; /* 줄간격 */
+        }
+
+        .user_area_row {
+            display: flex;
+        }
+
+        .user_area_row span {
+            flex: 1;
+        }
+
+        .user_area_row ul {
+            flex: 6;
+        }
+
+        .user_area_row ul > li {
+            display: inline-block; /* li 수평정렬 */
+            margin-left: 8px;
+        }
+
+        footer > .side_area > .user_area > .user_area_row ul > li > a {
+            color: darkgray;
+        }
+
+        .navercol {
+            flex: 1;
+            display: flex;
+        }
+
+
+        .navercol .naver_content {
+            line-height: 20px;
+        }
+
+        .naver_col .naver_img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .bottom_area {
+            flex: 3;
+            padding-top: 20px;
+            font-size: 13px;
+            color: black;
+        }
+
+        .bottom_area ul > li {
+            display: inline-block; 
+            margin-left: 8px;
+        }
+
+        .bottom_area ul > li > a {
+            color: gray;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header id="main_header">
+
+        <div class="apps">
+            <a href="https://help.naver.com/support/welcomePage/guide.help" class="app_link">네이버를 시작페이지로 > &nbsp; </a>
+            <a href="https://jr.naver.com/" class="app_link">쥬니어네이버 &nbsp;</a>
+            <a href="https://happybean.naver.com/" class="app_link">해피빈</a>
+        </div>
+
+		<a href="http://www.naver.com"><img src="imgs/icon_naver.png" class="naver_logo"/></a>
+			
+        <div class="searchbox">
+				<input type="text">
+				<button type="button">검색</button>
+			</div>
+		</div>
+
+
+		<div id="naverbar">
+			<div class="naver_items">
+				<ul>
+					<li><a href="https://mail.naver.com/">메일</a></li>
+					<li><a href="https://section.cafe.naver.com/">카페</a></li>
+					<li><a href="https://section.blog.naver.com/">블로그</a></li>
+					<li><a href="https://kin.naver.com/">지식iN</a></li>
+					<li><a href="https://shopping.naver.com/">쇼핑</a></li>
+                    <li><a href="https://shoppinglive.naver.com/home">쇼핑LIVE</a></li>
+                    <li><a href="https://order.pay.naver.com/home">Pay</a></li>
+                    <li><a href="https://tv.naver.com/">TV</a></li>
+                    <li><a href="https://dict.naver.com/">사전</a></li>
+                    <li><a href="https://news.naver.com/">뉴스</a></li>
+                    <li><a href="https://finance.naver.com/">증권</a></li>
+                    <li><a href="https://land.naver.com/">부동산</a></li>
+                    <li><a href="https://map.naver.com/">지도</a></li>
+                    <li><a href="https://vibe.naver.com/">VIBE</a></li>
+                    <li><a href="https://search.shopping.naver.com/book/home">도서</a></li>
+                    <li><a href="https://comic.naver.com/">웹툰</a></li>
+                    <li><a href="https://www.naver.com/#">더보기 | 미세 - 좋음 | 11.4 흐림 </a></li>
+                    <hr>
+                </ul>		
+			</div>
+		</div>
+
+        <div id="naver_ad">
+            <div id="naverad"> 
+                <img src="./imgs/icon_ad.png" class="ad_naver"></a>
+            </div>
+        </div>
+
+        <div id="main_right_area"> 
+            <div id="naverlog"> 
+                <p>네이버를 더 안전하고 편안하게 이용하세요.</p>
+                <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com"><strong>NAVER</strong>로그인</a>
+                <div class="naverlogin">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디 | 비밀번호 찾기 | 회원가입</span>
+                </div>
+            </div>
+    </header>
+
+<main>
+
+    <div class="navermain">
+        <div id="naver_news">
+                <div class="news_banner">
+                    <h5>뉴스 스탠드</h3>
+                </div>
+        </div>
+
+        <ul class="news_lists">
+            <li class="news_list">
+                <img src="./imgs/huff.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/newdaily.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/대한경제.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/미디어오늘.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/법률방송.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/엑스포츠.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/이투데이.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/인더스트리.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/일간스포츠.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/전자신문.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/이투데이.png">
+            </li>
+            <li class="news_list">
+                <img src="./imgs/이웃집과학자.png">
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+<footer>
+    <div class="notice_area">
+      <a href="https://www.naver.com/NOTICE"><strong>공지사항</strong> &nbsp; &nbsp; 네이버 '개인정보 처리방침' 변경에 대한 안내 말씀드립니다.</a>
+      <a href="https://www.naver.com/more.html">서비스 전체보기></a>
+    </div>
+    <div class="side_area">
+      <div class="user_area">
+        <div class="user_area_row">
+          <span><strong>Creators</strong></span>
+          <ul>
+            <li><a href="https://www.navercorp.com/service/creators">크리에이터&nbsp;</a></li>
+            <li><a href="https://www.navercorp.com/service/business">| &nbsp; 스몰비즈니스</a></li>
+          </ul>
+        </div>
+
+        <div class="user_area_row">
+          <span><strong>Partners</strong></span>
+          <ul>
+            <li><a href="https://campaign.naver.com/smefullcare/online/">SME 풀케어 시스템&nbsp; </a></li>
+            <li><a href="https://business.naver.com/service.html">| &nbsp; 비즈니스 광고 </a></li>
+            <li><a href="https://sell.storefarm.naver.com/#/home/about">| &nbsp; 스토어 개설 </a></li>
+            <li><a href="https://smartplace.naver.com/">| &nbsp; 지역업체 등록</a></li>
+            <li><a href="https://expert.naver.com/expert/introduction?tab=guide#join">| &nbsp;엑스퍼트 등록</a></li>
+          </ul>
+        </div>
+
+        <div class="user_area_row">
+          <span><strong>Developers</strong></span>
+          <ul>
+            <li><a href="https://developers.naver.com/">네이버 개발자센터 &nbsp; </a></li>
+            <li><a href="https://developers.naver.com/docs/common/openapiguide/#/apilist.md">| &nbsp;오픈API </a></li>
+            <li><a href="https://naver.github.io/">| &nbsp; 오픈소스</a></li>
+            <li><a href="https://d2.naver.com/">| &nbsp; 네이버 D2</a></li>
+            <li><a href="http://d2startup.com/">| &nbsp; 네이버 D2SF</a></li>
+            <li><a href="https://www.naverlabs.com/">| &nbsp; 네이버 랩스</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="navercol">
+        <div class="naver_content">
+          <div><strong>웨일 브라우저</strong></div>
+          <div class="naver_link"><a href="http://whale.naver.com/">다운받기</a></div>
+        </div>
+        <a href="http://whale.naver.com/"><img src="imgs/icon_whale.png" class="naver_img"/></a>
+      </div>
+      <div class="navercol">
+        <div class="naver_content">
+          <div><strong>프로젝트 꽃</strong></div>
+          <div class="naver_link"><a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%BD%83">바로가기</a></div>
+        </div>
+        <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%BD%83"><img src="imgs/icon_flower.png" class="naver_img"/></a>
+      </div>
+    </div>
+    <div class="bottom_area">
+      <ul>
+        <li><a href="https://www.navercorp.com">회사소개</a></li>
+        <li><a href="https://recruit.navercorp.com/">| &nbsp; 인재채용</a></li>
+        <li><a href="https://www.navercorp.com/naver/proposalGuide">| &nbsp; 제휴제안</a></li>
+        <li><a href="https://www.naver.com/policy/service.html">| &nbsp; 이용약관</a></li>
+        <li><a href="https://www.naver.com/policy/privacy.html">| &nbsp; <strong>개인정보처리방침</strong></a></li>
+        <li><a href="https://www.naver.com/policy/youthpolicy.html">| &nbsp; 청소년보호정책</a></li>
+        <li><a href="https://policy.naver.com/policy/service_group.html">| &nbsp; 네이버 정책</a></li>
+        <li><a href="https://help.naver.com/">| &nbsp;고객센터</a></li>
+        <li><a href="https://www.navercorp.com/">| &nbsp; &copy; NAVER Corp.</a></li>
+      </ul>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>	

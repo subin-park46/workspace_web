@@ -24,7 +24,7 @@
                 
                 $.ajax({
                     url:"emplist.xml", // 요청할 주소
-                    dataType:"xml", // 요청 방식
+                    dataType:"xml", // 응답받는 데이터의 Type
                     success:function(data){ // 비동기 통신이 성공했을 때
                         var empRowList=$(data).find("ROW"); // "ROW"들만 찾아서
                         // return 값을 body에 append후, makeTable에 전달

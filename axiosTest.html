@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button {
+            width: 100px;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        onload=()=>{
+            target_url = "https://jsonplaceholder.typicode.com/posts";
+
+            btns = document.querySelectorAll("button");
+
+            btns[0].addEventListener('click', ()=>{
+                axios({
+                    method: "get",
+                    url: target_url
+                }).then(function(resp){
+                    alert(JSON.stringify(resp));
+                });
+            });
+
+            btns[1].addEventListener("click", ()=>{
+                axios({
+                    method: "get",
+                    url: target_url + "/1"
+                }).then(function(resp){
+                    alert(JSON.stringify(resp));
+                });
+            });
+
+            btns[2].addEventListener("click", ()=> {
+                axios({
+                    method: "post",
+                    url: target_url,
+                    data: {"title": "test", "body": "insert"}
+                }).then(function(resp){
+                    alert(JSON.stringify(resp));
+                });
+            });
+
+            btns[3].addEventListener("click", ()=>{
+                axios({
+                    method: "put",
+                    url: target_url + "/1",
+                    data: {"title": "test", "body": "update"}
+                }).then(function(resp){
+                    alert(JSON.stringify(resp));
+                });
+            });
+
+            btns[4].addEventListener("click", ()=>{
+                axios({
+                    method: "delete",
+                    url: target_url + "/1",
+                }).then(function(resp){
+                    alert(JSON.stringify(resp));
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <button>GET ALL</button>
+    <br>
+    <button>GET 1</button>
+    <br>
+    <button>POST</button>
+    <br>
+    <button>PUT</button>
+    <br>
+    <button>DELETE</button>
+</body>
+</html>
